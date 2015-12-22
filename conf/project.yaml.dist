@@ -1,0 +1,15 @@
+---
+#
+# Jenkins Task Name
+#
+task_name : '<task_name>'
+
+#
+# Task Token set in Jenkins for remote executions
+#
+task_token : '<task_token>'
+
+#
+# Allowed Environments for automatic deployments through CI
+#
+ci_envs : [ 'staging', 'quality' ]

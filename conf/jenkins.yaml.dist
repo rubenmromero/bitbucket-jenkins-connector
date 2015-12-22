@@ -1,0 +1,15 @@
+---
+#
+# Jenkins Base URL
+#
+jenkins_url : '<jenkins_url>'
+
+#
+# Jenkins User set for remote executions
+#
+jenkins_user : '<jenkins_user>'
+
+#
+# Jenkins User Token
+#
+jenkins_user_token : '<jenkins_user_token>'
