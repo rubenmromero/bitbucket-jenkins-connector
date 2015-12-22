@@ -12,4 +12,4 @@ task_token : '<task_token>'
 #
 # Allowed Environments for automatic deployments through CI
 #
-ci_envs : [ 'staging', 'quality' ]
+ci_envs : [ 'develop', 'master' ]
