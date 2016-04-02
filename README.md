@@ -26,7 +26,7 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
         $ sudo a2enmod cgi
 
-5. Enable 'bjconnector' VHost:
+5. Enable `bjconnector` VHost:
 
     * For Debian OS family:
 
