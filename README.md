@@ -56,8 +56,8 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
 7. Configure the following webhook in the Bitbucket project:
 
-    Title: Jenkins-Deploy_<Project>
-    URL: http://bjconnector.<domain>/deploy_branch.py?project=<project>[&application=<submodule>]
-    Status: Active
-    Triggers: "Repository push"
+    * Title => `Jenkins-Deploy_<Project>`
+    * URL => [](http://bjconnector.<domain>/deploy_branch.py?project=<project>[&application=<submodule>])
+    * Status => `Active`
+    * Triggers => `Repository push`
 
