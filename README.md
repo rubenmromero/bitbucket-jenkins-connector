@@ -13,7 +13,7 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
     [Multi-Branch Project Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Multi-Branch+Project+Plugin)
 
-The project types will appear in the list on the "New Job" page. When configuring the project, the SCM portion will be different. This section tells the project how to find branches to create sub-projects for. Just about everything else should look like a normal free-style project and will be applied to each sub-project.
+    The project types will appear in the list on the "New Job" page. When configuring the project, the SCM portion will be different. This section tells the project how to find branches to create sub-projects for. Just about everything else should look like a normal free-style project and will be applied to each sub-project.
 
 ## Configuration
 
@@ -56,8 +56,8 @@ The project types will appear in the list on the "New Job" page. When configurin
 
 7. Configure the following webhook in the Bitbucket project:
 
-    * Title => Jenkins-Deploy_<Project>
-    * URL => http://bjconnector.<domain>/deploy_branch.py?project=<project>[&application=<submodule>]
-    * Status => Active
-    * Triggers => "Repository push"
+    - Title => Jenkins-Deploy_<Project>
+    - URL => http://bjconnector.<domain>/deploy_branch.py?project=<project>[&application=<submodule>]
+    - Status => Active
+    - Triggers => "Repository push"
 
