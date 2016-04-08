@@ -5,7 +5,7 @@ Web service to integrate Bitbucket webhooks with Jenkins multi-branch projects.
 Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
 ![Bitbucket](https://worldvectorlogo.com/logos/bitbucket.svg)
-![Jenkins](https://wiki.jenkins-ci.org/download/attachments/2916393/logo.png)
+![Jenkins](https://wiki.jenkins-ci.org/download/attachments/2916393/logo.png?version=1&modificationDate=1302753947000)
 
 ## Prerequisites
 
