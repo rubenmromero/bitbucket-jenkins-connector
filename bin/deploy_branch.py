@@ -6,22 +6,25 @@
 import os, sys, socket, json, requests, cgi, cgitb, subprocess, yaml
 
 #
-# Jenkins Configuration Import
-#
-file = open('../conf/jenkins.yaml', 'r')
-jenkins_conf = yaml.safe_load(file)
-file.close()
-
-jenkins_url = jenkins_conf['jenkins_url']
-jenkins_user = jenkins_conf['jenkins_user']
-jenkins_user_token = jenkins_conf['jenkins_user_token']
-
-#
 # Main
 #
 
 # For execution through HTTP request
-print 'Content-Type: text/html\n'
+print "Content-Type: text/html\n"
+
+# Jenkins Configuration Import
+jenkins_config_file = '../conf/jenkins.yaml'
+if os.path.isfile(jenkins_config_file):
+    file = open(jenkins_config_file, 'r')
+    jenkins_conf = yaml.safe_load(file)
+    file.close()
+
+    jenkins_url = jenkins_conf['jenkins_url']
+    jenkins_user = jenkins_conf['jenkins_user']
+    jenkins_user_token = jenkins_conf['jenkins_user_token']
+else:
+    print "The Jenkins configuration file not exists"
+    exit(1)
 
 # Get the params recieved through GET query string in the request
 query_string = {}
@@ -39,13 +42,18 @@ application = query_string.get('application')
 
 # If project field has been recieved, get the project deployment configuration
 if project:
-    file = open('../conf/' + project + '.yaml', 'r')
-    deploy_conf = yaml.safe_load(file)
-    file.close()
+    project_config_file = '../conf/' + project + '.yaml'
+    if os.path.isfile(project_config_file):
+        file = open(project_config_file, 'r')
+        deploy_conf = yaml.safe_load(file)
+        file.close()
 
-    task_name = deploy_conf['task_name']
-    task_token = deploy_conf['task_token']
-    ci_envs = deploy_conf['ci_envs']
+        task_name = deploy_conf['task_name']
+        task_token = deploy_conf['task_token']
+        ci_envs = deploy_conf['ci_envs']
+    else:
+        print "The '" + project + "' project has not configuration file"
+        exit(1)
 else:
     print "It has not been recieved any 'project' param through query string in the request"
     exit(1)

@@ -24,17 +24,11 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
         $ cp -p conf/jenkins.yaml.dist conf/jenkins.yaml
         $ vi conf/jenkins.yaml
 
-3. For each new project to deploy through Jenkins, create a copy of [project.yaml.dist](conf/project.yaml.dist) template to `conf/<project>.yaml`, edit the new file and set the Jenkins project parameters replacing the existing `<tags>` with the appropiate values:
-
-        # From the project root folder
-        $ cp -p conf/project.yaml.dist conf/<project>.yaml
-        $ vi conf/<project>.yaml
-
-4. For Debian OS family, enable Apache cgi module (in Red Hat OS family this module is loaded by default):
+3. For Debian OS family, enable Apache cgi module (in Red Hat OS family this module is loaded by default):
 
         $ sudo a2enmod cgi
 
-5. Enable `bjconnector` VHost:
+4. Enable `bjconnector` VHost:
 
     * For Debian OS family:
 
@@ -49,12 +43,19 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
             $ sudo cp vhost/redhat/bjconnector.conf /etc/httpd/conf.d
             $ /etc/init.d/httpd restart
 
-6. Enable the "Trigger builds remotely (e.g., from scripts)" checkbox for each branch task of the multi-branch project, setting the same authentication token that has been defined in 'task_token' parameter of `conf/<project>.yaml` file created before.
+For each new project to deploy through Jenkins:
 
-7. Configure the following webhook in the Bitbucket project:
+1. Create a copy of [project.yaml.dist](conf/project.yaml.dist) template to `conf/<project>.yaml`, edit the new file and set the Jenkins project parameters replacing the existing `<tags>` with the appropiate values:
+
+        # From the project root folder
+        $ cp -p conf/project.yaml.dist conf/<project>.yaml
+        $ vi conf/<project>.yaml
+
+2. Enable the "Trigger builds remotely (e.g., from scripts)" checkbox for each branch task of the multi-branch project, setting the same authentication token that has been defined in 'task_token' parameter of `conf/<project>.yaml` file created before.
+
+3. Configure the following webhook in the Bitbucket project:
 
     * Title => `Jenkins-Deploy_<Project>`
     * URL => `http://bjconnector.<domain>/deploy_branch.py?project=<project>[&application=<submodule>]`
     * Status => `Active`
     * Triggers => `Repository push`
-
