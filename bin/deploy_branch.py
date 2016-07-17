@@ -74,11 +74,10 @@ else:
 if branch not in ci_envs:
     exit(1)
 
-# Define the Jenkins task URL
-task_url = jenkins_url + '/job/' + task_name + '/branch/' + branch + '/buildWithParameters'
-
-# Execute the POST request to the corresponding Jenkins task
+# Define Jenkins task URL and execute POST request to the corresponding Jenkins task
 if application:
+    task_url = jenkins_url + '/job/' + task_name + '/branch/' + branch + '/buildWithParameters'
     task_request = requests.post(task_url, auth=(jenkins_user, jenkins_user_token), data={"token":task_token, "delay":"0sec", "application":application})
 else:
+    task_url = jenkins_url + '/job/' + task_name + '/branch/' + branch + '/build'
     task_request = requests.post(task_url, auth=(jenkins_user, jenkins_user_token), data={"token":task_token, "delay":"0sec"})
