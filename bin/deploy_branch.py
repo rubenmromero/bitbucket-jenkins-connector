@@ -81,3 +81,7 @@ if application:
 else:
     task_url = jenkins_url + '/job/' + task_name + '/branch/' + branch + '/build'
     task_request = requests.post(task_url, auth=(jenkins_user, jenkins_user_token), data={"token":task_token, "delay":"0sec"})
+
+# Print POST request information
+print "Request  => " + task_request.url
+print "Response => " + task_request.reason
