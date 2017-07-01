@@ -8,7 +8,7 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
 * Multi-Branch Project Plugin for Jenkins. Use the Jenkins plugin update center to download and install the latest version:
 
-    [Multi-Branch Project Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Multi-Branch+Project+Plugin)
+    [Pipeline Multibranch Plugin](https://wiki.jenkins.io/display/JENKINS/Pipeline+Multibranch+Plugin)
 
     The project types will appear in the list on the "New Job" page. When configuring the project, the SCM portion will be different. This section tells the project how to find branches to create sub-projects for. Just about everything else should look like a normal free-style project and will be applied to each sub-project.
 
