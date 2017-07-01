@@ -50,7 +50,7 @@ if project:
 
         task_name = deploy_conf['task_name']
         task_token = deploy_conf['task_token']
-        ci_envs = deploy_conf['ci_envs']
+        ci_branches = deploy_conf['ci_branches']
     else:
         print "The '" + project + "' project has not configuration file"
         exit(1)
@@ -65,13 +65,18 @@ payload = webhook_data.value
 # If webhook Payload has been recieved, decode the JSON and get the pushed branch
 if (payload) and (os.getenv('REQUEST_METHOD') == 'POST'):
     payload = json.loads(payload)
-    branch = payload['push']['changes'][0]['new']['name']
+    try:
+        branch = payload['push']['changes'][0]['new']['name']
+    except TypeError:
+        print "The received Payload not includes new commits belonging to a branch, so it is not necessary to execute any Jenkins task"
+        exit(1)
 else:
     print "The Payload sent from Bitbucket webhook has not been recieved"
     exit(1)
 
-# If the pushed branch is not included in ci_envs list, finish the script execution with exit code 1
-if branch not in ci_envs:
+# If the pushed branch is not included in ci_branches list, finish the script execution with exit code 1
+if branch not in ci_branches:
+    print "The pushed branch is not enabled for automatic deployments"
     exit(1)
 
 # Define Jenkins task URL and execute POST request to the corresponding Jenkins task

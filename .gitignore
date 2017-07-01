@@ -1,2 +1,2 @@
 *.pyc
-/conf/*.yaml
+/conf/jenkins.yaml

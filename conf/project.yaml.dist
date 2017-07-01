@@ -10,6 +10,6 @@ task_name : '<task_name>'
 task_token : '<task_token>'
 
 #
-# Allowed Environments for automatic deployments through CI
+# Enabled Branches (environments) for automatic deployments through CI
 #
-ci_envs : [ 'develop', 'master' ]
+ci_branches : [ 'develop', 'master' ]
