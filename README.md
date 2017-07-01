@@ -6,7 +6,7 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
 ## Prerequisites
 
-* Multi-Branch Project Plugin for Jenkins. Use the Jenkins plugin update center to download and install the latest version:
+* Pipeline Multibranch Plugin for Jenkins. Use the Jenkins plugin update center to download and install the latest version:
 
     [Pipeline Multibranch Plugin](https://wiki.jenkins.io/display/JENKINS/Pipeline+Multibranch+Plugin)
 
