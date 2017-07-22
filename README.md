@@ -34,6 +34,8 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
             # From the project root folder
             $ sudo cp vhost/debian/bjconnector.conf /etc/apache2/sites-available/
+            $ sudo vi /etc/apache2/sites-available/bjconnector.conf
+            # Replace the existing <tags> with the appropiate values
             $ sudo a2ensite bjconnector.conf
             $ /etc/init.d/apache2 restart
 
@@ -41,6 +43,8 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
             # From the project root folder
             $ sudo cp vhost/redhat/bjconnector.conf /etc/httpd/conf.d
+            $ sudo vi /etc/httpd/conf.d/bjconnector.conf
+            # Replace the existing <tags> with the appropiate values
             $ /etc/init.d/httpd restart
 
 For each new project to deploy through Jenkins:
