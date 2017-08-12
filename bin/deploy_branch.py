@@ -62,7 +62,7 @@ else:
 webhook_data = cgi.FieldStorage()
 payload = webhook_data.value
 
-# If webhook Payload has been recieved, decode the JSON and get the pushed branch
+# If the webhook Payload has been recieved, decode the JSON and get the pushed branch
 if (payload) and (os.getenv('REQUEST_METHOD') == 'POST'):
     payload = json.loads(payload)
     try:
