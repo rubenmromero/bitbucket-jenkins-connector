@@ -16,44 +16,44 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
 1. Download the project code in your favourite path:
 
-        $ git clone https://github.com/rubenmromero/bitbucket-jenkins-connector.git
+       $ git clone https://github.com/rubenmromero/bitbucket-jenkins-connector.git
 
 2. Create a copy of [jenkins.yaml.dist](conf/jenkins.yaml.dist) template to `conf/jenkins.yaml`, edit the new file and set the Jenkins global parameters replacing the existing `<tags>` with the appropiate values:
 
-        # From the project root folder
-        $ cp -p conf/jenkins.yaml.dist conf/jenkins.yaml
-        $ vi conf/jenkins.yaml
+       # From the project root folder
+       $ cp -p conf/jenkins.yaml.dist conf/jenkins.yaml
+       $ vi conf/jenkins.yaml
 
 3. For Debian OS family, enable Apache cgi module (in Red Hat OS family this module is loaded by default):
 
-        $ sudo a2enmod cgi
+       $ sudo a2enmod cgi
 
 4. Enable `bjconnector` VHost:
 
     * For Debian OS family:
 
-            # From the project root folder
-            $ sudo cp vhost/debian/bjconnector.conf /etc/apache2/sites-available/
-            $ sudo vi /etc/apache2/sites-available/bjconnector.conf
-            # Replace the existing <tags> with the appropiate values
-            $ sudo a2ensite bjconnector.conf
-            $ /etc/init.d/apache2 restart
+          # From the project root folder
+          $ sudo cp vhost/debian/bjconnector.conf /etc/apache2/sites-available/
+          $ sudo vi /etc/apache2/sites-available/bjconnector.conf
+          # Replace the existing <tags> with the appropiate values
+          $ sudo a2ensite bjconnector.conf
+          $ /etc/init.d/apache2 restart
 
     * For Red Hat OS family:
 
-            # From the project root folder
-            $ sudo cp vhost/redhat/bjconnector.conf /etc/httpd/conf.d
-            $ sudo vi /etc/httpd/conf.d/bjconnector.conf
-            # Replace the existing <tags> with the appropiate values
-            $ /etc/init.d/httpd restart
+          # From the project root folder
+          $ sudo cp vhost/redhat/bjconnector.conf /etc/httpd/conf.d
+          $ sudo vi /etc/httpd/conf.d/bjconnector.conf
+          # Replace the existing <tags> with the appropiate values
+          $ /etc/init.d/httpd restart
 
 For each new project to deploy through Jenkins:
 
 1. Create a copy of [project.yaml.dist](conf/project.yaml.dist) template to `conf/<project>.yaml`, edit the new file and set the Jenkins project parameters replacing the existing `<tags>` with the appropiate values:
 
-        # From the project root folder
-        $ cp -p conf/project.yaml.dist conf/<project>.yaml
-        $ vi conf/<project>.yaml
+       # From the project root folder
+       $ cp -p conf/project.yaml.dist conf/<project>.yaml
+       $ vi conf/<project>.yaml
 
 2. Enable the "Trigger builds remotely (e.g., from scripts)" checkbox for each branch task of the multi-branch project, setting the same authentication token that has been defined in 'task_token' parameter of `conf/<project>.yaml` file created before.
 
