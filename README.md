@@ -33,6 +33,7 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
     * For Debian OS family:
 
           # From the project root folder
+          $ sudo cp vhost/bitbucket_access.conf /etc/apache2/
           $ sudo cp vhost/debian/bjconnector.conf /etc/apache2/sites-available/
           $ sudo vi /etc/apache2/sites-available/bjconnector.conf
           # Replace the existing <tags> with the appropiate values
@@ -42,7 +43,8 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
     * For Red Hat OS family:
 
           # From the project root folder
-          $ sudo cp vhost/redhat/bjconnector.conf /etc/httpd/conf.d
+          $ sudo cp vhost/bitbucket_access.conf /etc/httpd/conf/
+          $ sudo cp vhost/redhat/bjconnector.conf /etc/httpd/conf.d/
           $ sudo vi /etc/httpd/conf.d/bjconnector.conf
           # Replace the existing <tags> with the appropiate values
           $ /etc/init.d/httpd restart
