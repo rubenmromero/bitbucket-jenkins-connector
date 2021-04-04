@@ -14,11 +14,11 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
 
 ## Configuration
 
-1. Download the project code in your favourite path:
+1. Clone the project in the path you want:
 
        $ git clone https://github.com/rubenmromero/bitbucket-jenkins-connector.git
 
-2. Create a copy of [jenkins.yaml.dist](conf/jenkins.yaml.dist) template to `conf/jenkins.yaml`, edit the new file and set the Jenkins global parameters replacing the existing `<tags>` with the appropiate values:
+2. Create a copy of [`jenkins.yaml.dist`](conf/jenkins.yaml.dist) template as `conf/jenkins.yaml`, edit the new file and set the Jenkins global parameters replacing the existing `<tags>` by the appropriate values:
 
        # From the project root folder
        $ cp -p conf/jenkins.yaml.dist conf/jenkins.yaml
@@ -36,7 +36,7 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
           $ sudo cp vhost/bitbucket_access.conf /etc/apache2/
           $ sudo cp vhost/debian/bjconnector.conf /etc/apache2/sites-available/
           $ sudo vi /etc/apache2/sites-available/bjconnector.conf
-          # Replace the existing <tags> with the appropiate values
+          # Replace the existing <tags> with the appropriate values
           $ sudo a2ensite bjconnector.conf
           $ /etc/init.d/apache2 restart
 
@@ -46,18 +46,18 @@ Execute a Jenkins branch task based on the pushed branch from Bitbucket.
           $ sudo cp vhost/bitbucket_access.conf /etc/httpd/conf/
           $ sudo cp vhost/redhat/bjconnector.conf /etc/httpd/conf.d/
           $ sudo vi /etc/httpd/conf.d/bjconnector.conf
-          # Replace the existing <tags> with the appropiate values
+          # Replace the existing <tags> with the appropriate values
           $ /etc/init.d/httpd restart
 
 For each new project to deploy through Jenkins:
 
-1. Create a copy of [project.yaml.dist](conf/project.yaml.dist) template to `conf/<project>.yaml`, edit the new file and set the Jenkins project parameters replacing the existing `<tags>` with the appropiate values:
+1. Create a copy of [`project.yaml.dist`](conf/project.yaml.dist) template as `conf/<project>.yaml`, edit the new file and set the Jenkins project parameters replacing the existing `<tags>` by the appropriate values:
 
        # From the project root folder
        $ cp -p conf/project.yaml.dist conf/<project>.yaml
        $ vi conf/<project>.yaml
 
-2. Enable the "Trigger builds remotely (e.g., from scripts)" checkbox for each branch task of the multi-branch project, setting the same authentication token that has been defined in 'task_token' parameter of `conf/<project>.yaml` file created before.
+2. Enable the "Trigger builds remotely (e.g., from scripts)" checkbox for each branch task of the multi-branch project, setting the same authentication token that has been entered in the `task_token` parameter of the `conf/<project>.yaml` file created before.
 
 3. Configure the following webhook in the Bitbucket project:
 
